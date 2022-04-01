@@ -21,6 +21,15 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 
+    <style>
+      .up {
+        transform: translate(0, 0);
+        transition: transform 0.5s;
+      }
+      .up:hover {
+        transform: translate(0, -10px);
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
@@ -67,7 +76,7 @@
             </p>
             <v-row>
               <v-col cols="12" sm="6" v-for="c, index in cards" :key="index">
-                <v-card>
+                <v-card class="up">
                   <v-img :src="c.img" aspect-ratio="2.0"></v-img>
                   <v-card-text>{{ c.title }}</v-card-text>
                   <v-card-actions>
@@ -79,7 +88,7 @@
               </v-col>
             </v-row>
           </v-container>
-          <v-container>
+          <!-- <v-container>
             <v-card>
               <v-slide-x-transition group>
                 <v-list-item v-for="n, index in recommend" :key="index">
@@ -89,11 +98,14 @@
                 </v-list-item>
               </v-slide-x-transition>
             </v-card>
-          </v-container>
+          </v-container> -->
+
+          <recommend-list :recommend="recommend"></recommend-list>
         </v-main>
       </v-app>
     </div>
 
+    <script src="recommendList.js"></script>
     <script>
       new Vue({
         el: "#app",
